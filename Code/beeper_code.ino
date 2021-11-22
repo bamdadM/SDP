@@ -3,7 +3,7 @@ int16_t AcX_2,AcY_2,AcZ_2,Tmp_2,GyX_2,GyY_2,GyZ_2;
 int buzzer;
 int16_t DiffGyX;
 int16_t DiffGyY;
-
+int d;
 void setup() {
 
  AcX=0;
@@ -19,7 +19,6 @@ void setup() {
  buzzer =3;
  Serial.begin(9600);
 }
-//void beeper_frequency(DiffGxY,DiffGxX);
 
 
 void loop() {
@@ -36,20 +35,31 @@ void loop() {
   beeper_frequency(DiffGyY,DiffGyX,buzzer);
 }
 
+void beeper_delay(int d){
+  tone(buzzer,500);
+  delay(d);
+  noTone(buzzer);
+  delay(d);
+}
+
+
 void beeper_frequency(int16_t DiffGxY, int16_t DiffGxX, int buzzer){
   
   if((DiffGyY>=10&& DiffGyY<=25) && (DiffGyX>=10||DiffGyX<=25)){
-    tone(buzzer,349);
-    delay(2000);
+     beeper_delay(500);
+     
     return;
     
 //    analogWrite(buzzer,127);
     return;
   }
   else if((DiffGyY>=26&& DiffGyY<=35) && (DiffGyX>=26||DiffGyX<=35)){
-    analogWrite(buzzer,50);
-    delay(200);
+     beeper_delay(1000);
     return;
+  }
+  else if((DiffGyY>=36&& DiffGyY<=45) && (DiffGyX>=36||DiffGyX<=45)){
+     beeper_delay(1500);
+     return;
   }
   else return;
 }
