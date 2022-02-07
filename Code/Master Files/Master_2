@@ -1,4 +1,4 @@
-// Gyroscope and Lidar Master Code
+// Gyroscope, Lidar, GPS Master Code
 #include "GY521.h"
 #include <Wire.h>
 #include <IBusBM.h>
